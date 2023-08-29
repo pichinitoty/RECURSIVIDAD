@@ -10,16 +10,33 @@ int main()
     float total;
     ///suma de elementos
     int arreglo[5]={1,2,3,4,5};
-    int dim =5;
+    int dim = 5;
     int contador = 0;
     int resultado;
     float promedio1;
-
     resultado = sumadeelementos(arreglo, dim, contador);
-    printf("la suma de los elementos es de %i", resultado);
+    printf("la suma de los elementos es de %i\n", resultado);
+    /// promedio del arreglo
     promedio1 = promedio(arreglo, dim, contador);
-    printf("el promedio es de: %f", promedio1);
-
+    printf("el promedio es de: %f\n", promedio1);
+    /// busqueda del menor elemento
+    int menor;
+    int chico;
+    menor = arreglo[0];
+    chico = busquedamenor(arreglo, dim, contador, menor);
+    printf("el menor numero del arreglo es: %i\n", chico);
+    int validos = dim-1;
+    /// mostrar arreglo invertido
+    mostrarInvertido(arreglo, dim, contador, validos);
+    printf("\n");
+    ///invertir arreglo
+    printf("arreglo invertido\n");
+    invertirArreglo(arreglo,contador, validos);
+    int contador2 = 0;
+    while(contador2<dim){
+    printf("|%i|\t", arreglo[contador2]);
+    contador2++;
+    }
 
 }
 
@@ -63,21 +80,43 @@ if (dim < contador){
 
 
 /// 2) funcio que reciba un arreglo encunetre el ,menor de sus elementos y lo devuelva.
-int busquedamenor (int arreglo[], int dim, int contador){
-int menor;
-menor = arreglo[contador];
-if(dim< contador){
-    return 0;
-    }else if(menor>arreglo[contador+1]){
+int busquedamenor (int arreglo[], int dim, int contador,int menor ){
+
+if(dim <= contador){
+    return menor;
+    }else if(menor>arreglo[contador]){
         menor = arreglo[contador];
-        return busquedamenor(arreglo, dim, contador+1);
     }
-
-    }
-
-
+    return busquedamenor(arreglo, dim, contador+1,menor);
+}
 
 
-/// 3) funncion que recbia un arreglo y lo muestre de manera invertida
+/// 3) mostrar arreglo invertido
 
-///
+void mostrarInvertido (int arreglo [], int dim, int contador, int validos){
+
+if (dim <=contador){
+    return 0;
+    }else
+    printf("|%i|\t", arreglo[validos]);
+    return mostrarInvertido(arreglo, dim, contador+1, validos-1);
+}
+
+
+/// 4) funncion que recbia un arreglo y lo muestre de manera invertida
+
+void invertirArreglo (int arreglo[], int contador, int validos){
+int aux;
+
+    if (contador > validos){
+    return 0;
+    }else{
+        aux = arreglo[contador];
+        arreglo[contador] = arreglo[validos];
+        arreglo[validos] = aux;
+        return invertirArreglo (arreglo, contador+1, validos-1);
+        }
+}
+
+
+/// 5) 
