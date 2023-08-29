@@ -1,16 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int sumadeelementos (int arreglo[], int dim, int contador);
 float promedio (int arreglo[], int dim, int contador);
+int busquedamenor (int arreglo[], int dim, int contador,int menor);
+void mostrarInvertido (int arreglo [], int dim, int contador, int validos);
+void invertirArreglo (int arreglo[], int contador, int validos);
+void numerosMayores (int arreglo[], int dim, int contador, int numero);
+
 
 int main()
 {
 
-    int numero;
     float total;
     ///suma de elementos
-    int arreglo[5]={1,2,3,4,5};
-    int dim = 5;
+    int arreglo[7]={7,2,3,4,5,15,9};
+    int dim = 7;
     int contador = 0;
     int resultado;
     float promedio1;
@@ -27,6 +32,7 @@ int main()
     printf("el menor numero del arreglo es: %i\n", chico);
     int validos = dim-1;
     /// mostrar arreglo invertido
+    printf("mostrar al reves\n");
     mostrarInvertido(arreglo, dim, contador, validos);
     printf("\n");
     ///invertir arreglo
@@ -37,6 +43,13 @@ int main()
     printf("|%i|\t", arreglo[contador2]);
     contador2++;
     }
+    printf("\n");
+    ///cantidad de elementos mayores a un numero X
+    int numero;
+    printf("ingrese un numero\n");
+    scanf("%i", &numero);
+    numerosMayores(arreglo, dim, contador, numero);
+
 
 }
 
@@ -73,7 +86,6 @@ if (dim < contador){
         numero = arreglo[contador];
         total = numero / dim;
         return total + promedio(arreglo, dim,contador + 1);
-
         }
 
 }
@@ -103,7 +115,7 @@ if (dim <=contador){
 }
 
 
-/// 4) funncion que recbia un arreglo y lo muestre de manera invertida
+/// 4) funncion que recbia un arreglo y lo invierta
 
 void invertirArreglo (int arreglo[], int contador, int validos){
 int aux;
@@ -119,4 +131,21 @@ int aux;
 }
 
 
-/// 5) 
+/// 5) función que cuente de un arreglo enteros, la cantidad de números mayores a uno pasado por parámetro
+
+
+void numerosMayores (int arreglo[], int dim, int contador, int numero){
+
+if(contador>dim){
+    return 0;
+    }
+    else if (numero < arreglo[contador])
+    {
+    printf("|%i|", arreglo[contador]);
+    }
+    return numerosMayores(arreglo, dim, contador+1, numero);
+
+}
+
+/// 6) Realizar una función que, dado un arreglo de enteros ordenado, busque un elemento en dicho arreglo
+
