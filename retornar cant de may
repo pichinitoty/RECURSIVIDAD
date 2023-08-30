@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int areglo[5]={1,2,3,4,5};
+    int dim =5;
+    int contador=0;
+    int mayores = 0;
+    int numero;
+    int mayor;
+    printf("ingrese un numero\n");
+    scanf("%i", &numero);
+    printf("\n");
+    mayor = buscarMayores(areglo, dim, contador, numero);
+    printf("los numero mayores a %i son %i", numero, mayor);
+
+}
+
+
+int buscarMayores (int areglo[], int dim, int contador,int numero){
+int mayores = 0;
+    if (contador>dim){
+    return 0;
+    }else if(numero>areglo[contador]){
+        mayores ++;
+        return mayores = buscarMayores(areglo, dim, contador+1,numero);
+    }else{
+    return buscarMayores(areglo, dim, contador+1,numero);
+    }
+}
