@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -49,8 +50,21 @@ int main()
     printf("ingrese un numero\n");
     scanf("%i", &numero);
     numerosMayores(arreglo, dim, contador, numero);
-
-
+    printf("\n");
+    ///buscar elemento en arreglo ordenado
+    int ordenado[6]={1,2,3,4,5,6};
+    int dim2 = 6;
+    int numero1;
+    int flag;
+    printf("ingrese el numero que desee buscar dentro del arreglo ordenado\n");
+    scanf("%i", &numero1);
+    flag=buscarNumero(ordenado, dim2, contador, numero1);
+    if(flag == 0){
+        printf("el numero no se encuentra dentro del arreglo\n");
+    }else{
+    printf("el numero se encuentra dentro del arrgelo\n");
+    }
+    ///sumar digitos de un entero
 }
 
 
@@ -148,4 +162,21 @@ if(contador>dim){
 }
 
 /// 6) Realizar una función que, dado un arreglo de enteros ordenado, busque un elemento en dicho arreglo
+int buscarNumero (int ordenado[], int dim2, int contador, int numero1){
+
+if (contador>dim2){
+    return 0;
+    }
+    else if(numero1 == ordenado[contador]){
+    return 1;
+    }
+    else{
+        return buscarNumero(ordenado, dim2, contador +1, numero1);
+    }
+}
+
+/// 7) funcion que sume los digitos de un numero entero entre si
+
+///int sumarDigitos (int entero,int decena, int unidad){
+
 
